@@ -5,8 +5,7 @@ nums = tuple([str(i) for i in range(10)])
 special_symbols = ('+',)
 nums_idx = []
 
-print(test_list)
-print(id(test_list))
+print('Исходный список: {}, id: {}'.format(test_list, id(test_list)))
 
 for idx, test_word in enumerate(test_list):
     if (nums.count(test_word[0]) > 0 or special_symbols.count(test_word[0])) and nums.count(test_word[-1]) > 0:
@@ -22,22 +21,21 @@ for idx, test_word in enumerate(test_list):
             else:
                 test_list[idx] = '{}'.format(test_word)
 
-print(test_list)
-print(id(test_list))
+print('Числа дополнены нулями: {}, id: {}'.format(test_list, id(test_list)))
 
 for idx in nums_idx[::-1]:
     test_list.insert(idx, '"')
     test_list.insert(idx + 2, '"')
 
-print(test_list)
-print(id(test_list))
+print('Числа обособлены кавычками: {}, id: {}'.format(test_list, id(test_list)))
 
 result_string = ' '.join(test_list)
-print(result_string)
+
+print('Список преобразован строку: {}'.format(result_string))
 
 result_string = list(result_string)
-
 i = 1
+
 for idx, _char in enumerate(result_string):
     if _char == '"' and i % 2 == 1:
         result_string.pop(idx+1)
@@ -46,5 +44,5 @@ for idx, _char in enumerate(result_string):
         result_string.pop(idx - 1)
         i += 1
 
-print(''.join(result_string))
+print('Убраны лишние пробелы вокруг чисел: {}'.format(''.join(result_string)))
 
