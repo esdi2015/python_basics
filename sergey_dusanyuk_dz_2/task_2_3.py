@@ -41,4 +41,3 @@ for idx, _char in enumerate(result_string):
         i += 1
 
 print('Убраны лишние пробелы вокруг чисел: {}'.format(''.join(result_string)))
-

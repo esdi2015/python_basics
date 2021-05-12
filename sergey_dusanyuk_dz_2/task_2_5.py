@@ -13,7 +13,7 @@ for price in test_list:
 
 prices_list_str = ', '.join(prices_list)
 
-print("Отформатированные цены:")
+print("Отформатированные цены (1 способ):")
 print(prices_list_str)
 print("\r")
 
@@ -27,7 +27,7 @@ for price in test_list:
 prices_list_str_1 = ', '.join(prices_list_1)
 
 
-print("Отформатированные цены:")
+print("Отформатированные цены (2 способ):")
 print(prices_list_str_1)
 print("\r")
 
@@ -54,4 +54,3 @@ top5_expensive = ((test_list[::-1])[:5])[::-1]
 
 print("Цены пяти самых дорогих товаров:")
 print(top5_expensive)
-
