@@ -20,7 +20,6 @@ print("\r")
 prices_list_1 = []
 
 for price in test_list:
-    price_str = str(price)
     rub = int(price)
     kop = int(price * 100 - int(price) * 100)
     prices_list_1.append('{:d} руб {:02d} коп'.format(rub, kop))
