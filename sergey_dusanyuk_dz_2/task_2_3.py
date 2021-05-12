@@ -1,3 +1,4 @@
+print('task 2-3')
 
 test_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
 
@@ -8,18 +9,13 @@ nums_idx = []
 print('Исходный список: {}, id: {}'.format(test_list, id(test_list)))
 
 for idx, test_word in enumerate(test_list):
+    special_symbol = ''
     if (nums.count(test_word[0]) > 0 or special_symbols.count(test_word[0])) and nums.count(test_word[-1]) > 0:
         nums_idx.append(idx)
         if special_symbols.count(test_word[0]) > 0:
-            if test_word.index(test_word[-1]) == 1:
-                test_list[idx] = '{}0{}'.format(test_word[0], test_word[-1])
-            else:
-                test_list[idx] = '{}'.format(test_word)
-        else:
-            if test_word.index(test_word[-1]) == 0:
-                test_list[idx] = '0{}'.format(test_word)
-            else:
-                test_list[idx] = '{}'.format(test_word)
+            special_symbol = test_word[0]
+            test_word = test_word[1:]
+        test_list[idx] = '{}{}'.format(special_symbol, test_word.zfill(2))
 
 print('Числа дополнены нулями: {}, id: {}'.format(test_list, id(test_list)))
 
