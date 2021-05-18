@@ -1,8 +1,14 @@
 from random import choice
-from random import randrange
 
 
-def get_jokes(num, repeat=True):
+def get_jokes(num: int, repeat=True) -> list:
+    """
+    Returns num random jokes
+
+    :param num: int, number of jokes to return
+    :param repeat: boolean, repeat words in the jokes or not
+    :return: list of jokes
+    """
     jokes = []
     nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
     adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
