@@ -27,5 +27,9 @@ def get_jokes(num: int, repeat=True) -> list:
 
 
 if __name__ == '__main__':
+    print('Jokes with words repeat')
     print(get_jokes(10, True))
+    print("\r")
+
+    print('Jokes without words repeat')
     print(get_jokes(10, False))

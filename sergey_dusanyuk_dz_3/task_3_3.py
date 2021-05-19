@@ -35,9 +35,15 @@ def thesaurus_adv_ext(*args):
 
 if __name__ == '__main__':
     names = thesaurus("Илья", "Иван", "Михаил", "Мария", "Петр")
+    print("thesaurus")
     print(names)
+    print("\r")
+
     names_adv = thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
+    print("thesaurus_adv")
     print(names_adv)
-    # names_adv_ext = thesaurus_adv_ext("Инна Серова", "Петр Алексеев", "Илья Иванов", "Иван Сергеев", "Анна Савельева")
-    names_adv_ext = thesaurus_adv_ext("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
+    print("\r")
+
+    names_adv_ext = thesaurus_adv_ext("Инна Серова", "Петр Алексеев", "Илья Иванов", "Иван Сергеев", "Анна Савельева")
+    print("thesaurus_adv_ext")
     print(names_adv_ext)
