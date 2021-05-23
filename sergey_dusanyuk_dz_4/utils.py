@@ -46,6 +46,10 @@ def currencies_codes():
 
 def currency_rates(in_currency):
     currency_rates_dict = prepare_currency_rates_dict()
-    out_currency = currency_rates_dict[in_currency.upper()]['Value']
+    out_currency = currency_rates_dict.get(in_currency.upper())
+    if out_currency:
+        out_currency = round(float(out_currency.get('Value').replace(',', '.')), 2)
+    else:
+        out_currency = None
     rates_date = currency_rates_dict['rates_date']
-    return round(float(out_currency.replace(',', '.')), 2), (datetime.strptime(rates_date, '%d.%m.%Y')).date()
+    return out_currency, (datetime.strptime(rates_date, '%d.%m.%Y')).date()

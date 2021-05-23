@@ -19,8 +19,12 @@ if __name__ == '__main__':
         else:
             try:
                 result = currency_rates(currency_in)
-                print(*result, sep=', ')
-                print(type(result[0]), type(result[1]))
+                if not result[0]:
+                    print('Please select value (or type "list" to view al codes):')
+                    print(*currencies_codes(), sep=', ')
+                else:
+                    print(*result, sep=', ')
+                    print(type(result[0]), type(result[1]))
             except KeyError as e:
                 print(e.__repr__())
                 print('Please select value (or type "list" to view al codes):')
