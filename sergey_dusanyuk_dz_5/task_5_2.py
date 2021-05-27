@@ -14,6 +14,5 @@ print(*odd_nums_2, sep=', ')
 try:
     print(next(odd_nums_2))
 except StopIteration as e:
-    print(dir(e))
     print(e.__repr__())
 
