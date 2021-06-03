@@ -1,8 +1,17 @@
 import os
 import shutil
+import json
 
+structure_file_name = 'structure.json'
 
 project_structure = {'my_project': ['settings', 'mainapp', 'adminapp', 'authapp']}
+
+
+def get_structure_from_file(structure_file_path):
+    with open(structure_file_path, 'r', encoding='utf-8') as f:
+        lines = f.read()
+    lines = lines.strip()
+    return json.loads(lines)
 
 
 def create_file(path_file):
@@ -12,6 +21,13 @@ def create_file(path_file):
 
 def create_folder(path_folder):
     os.mkdir(path_folder)
+
+
+def create_file_object(path_object):
+    if if_file_path(path_object):
+        create_file(path_object)
+    else:
+        create_folder(path_object)
 
 
 def if_file_path(path_file):
@@ -34,23 +50,20 @@ def list_to_file_objects(file_objects_list, working_path='', paths_list=[]):
 
 if __name__ == '__main__':
     root_folder = os.path.dirname(os.path.abspath(__file__))
+    project_structure = get_structure_from_file(os.path.join(root_folder, structure_file_name))
+    project_folder, project_file_objects = list(project_structure.keys())[0], list(project_structure.values())[0]
 
-    for project_folder, obj in project_structure.items():
+    if os.path.exists(os.path.join(root_folder, project_folder)):
+        print('exists, remove [Y/n]')
+        do_remove = input()
+        if do_remove.lower() == 'n':
+            exit(1)
+        else:
+            shutil.rmtree(os.path.join(root_folder, project_folder))
 
-        if os.path.exists(os.path.join(root_folder, project_folder)):
-            print('exists, remove [Y/n]')
-            do_remove = input()
-            if do_remove.lower() == 'n':
-                exit(1)
-            else:
-                shutil.rmtree(os.path.join(root_folder, project_folder))
+    os.mkdir(os.path.join(root_folder, project_folder))
+    paths = list_to_file_objects(project_file_objects, os.path.join(root_folder, project_folder))
 
-        os.mkdir(os.path.join(root_folder, project_folder))
+    for p in paths:
+        create_file_object(p)
 
-        paths_ = list_to_file_objects(obj, os.path.join(root_folder, project_folder))
-
-        for p in paths_:
-            if if_file_path(p):
-                create_file(p)
-            else:
-                create_folder(p)
