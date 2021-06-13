@@ -52,3 +52,13 @@ if __name__ == '__main__':
         print(e.__repr__())
         exit(2)
 
+    try:
+        traffic_light.running('red')
+        traffic_light.running('green')
+    except ColorError as e:
+        print(e.__repr__())
+        exit(1)
+    except ColorOrderError as e:
+        print(e.__repr__())
+        exit(2)
+
